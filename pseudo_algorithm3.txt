@@ -1,0 +1,39 @@
+/@author Sandeep Kaur
+ *ID 24066442
+ */
+
+=======================================================================
+Algorithm - Get a threshhold as an input and display the list of all the students.
+Description : - Displaying the list of Students whose Total marks are less than a threshold value that is entered by a user
+Assumption : - We already have A List of Student object.
+
+function getThreshold(Scanner sc)
+	display(Enter Threshold Value)
+	varThreshold = sc.nextDouble
+	return varThreshold
+	
+	
+function getListBelowThreshold():
+
+	varThreshold
+	List<> students
+	var listBelow[]
+    for int i = 0 to students.length
+
+		if (student.getTotalMarks() < threshold):
+			  listBelow.add(student)
+		end if
+    end the loop
+    
+    return listBelow[]
+
+function printBelowThreshold():
+
+	List<> students
+	var listBelow
+	for int i = 0 to listBelow.length
+		print listBelow.get(i).getFirstName()+ "  "+listBelow.get(i).getLastName()
+		
+    end the loop
+=======================================================================
+
