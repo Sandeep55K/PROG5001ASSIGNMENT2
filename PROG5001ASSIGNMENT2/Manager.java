@@ -32,6 +32,7 @@ public class Manager
             printStudentInfo(list);
             double threshold = getThreshold(sc);
             System.out.println("Threshold value entered by user is: "+threshold);
+            printBelowThreshold(list,threshold);
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -129,5 +130,21 @@ public class Manager
         }
         return threshold;
     }
+    /**
+     * Defining method to student with marks below threshold
+     */
+    public static void printBelowThreshold(List<Student> list, double threshold){
+        List<Student> belowThreshold = new ArrayList();
 
+        for(int i =0; i<list.size(); i++){
+
+            if (list.get(i).getAssessment().getTotalMarks() < threshold){
+                belowThreshold.add(list.get(i));
+            }
+        }
+        System.out.println("Students with Total Marks below Threshold are :");
+        for(int i = 0; i<belowThreshold.size();i++){
+            System.out.println(belowThreshold.get(i).getFirstName()+" "+belowThreshold.get(i).getLastName());
+        }
+    }
 }
