@@ -28,7 +28,8 @@ public class Manager
 
             //calling getData method to read and fetch data from the file
             List<Student> list = getData(fileName);
-            System.out.println(list);
+            //System.out.println(list);
+            printStudentInfo(list);
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -99,6 +100,19 @@ public class Manager
             main(null);
         }
         return list;
+    }
+    
+    /**
+     * Defining a method to print List of information with all data
+     */
+    public static void printStudentInfo(List<Student> list){
+        System.out.println("Name of the Unit "+'\t'+'\t'+"First Name"+'\t'+'\t'+"Last Name"+'\t'+'\t'+"Student ID"+'\t'+"A1"+'\t'+"A2"+'\t'+"A3"+'\t'+"Total");
+        System.out.println();
+        for(int i = 0; i<list.size();i++){
+            System.out.println(Assessment.unitName+'\t'+list.get(i).getFirstName()+'\t'+'\t'+'\t'+list.get(i).getLastName()+'\t'+'\t'+'\t'+'\t'+
+                list.get(i).getStudentId()+'\t'+list.get(i).getAssessment().getMarksA1()+'\t'+list.get(i).getAssessment().getMarksA2()+'\t'
+                +list.get(i).getAssessment().getMarksA3()+'\t'+list.get(i).getAssessment().getTotalMarks());
+        }
     }
 
 }
