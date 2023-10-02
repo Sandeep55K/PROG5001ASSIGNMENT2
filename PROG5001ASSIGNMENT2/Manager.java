@@ -30,6 +30,8 @@ public class Manager
             List<Student> list = getData(fileName);
             //System.out.println(list);
             printStudentInfo(list);
+            double threshold = getThreshold(sc);
+            System.out.println("Threshold value entered by user is: "+threshold);
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -113,6 +115,19 @@ public class Manager
                 list.get(i).getStudentId()+'\t'+list.get(i).getAssessment().getMarksA1()+'\t'+list.get(i).getAssessment().getMarksA2()+'\t'
                 +list.get(i).getAssessment().getMarksA3()+'\t'+list.get(i).getAssessment().getTotalMarks());
         }
+    }
+    /**
+     * Defining method to accept threshold from user
+     */
+    public static double getThreshold(Scanner sc){
+        double threshold;
+        System.out.println("Enter a double Threshold valid value for evaluation : between(0-300.0)");
+        threshold = sc.nextDouble();
+        if(threshold<0 & threshold>300){
+            System.out.println("!! Not a valid choice of Menu !! Please Select No. from the given options");
+            getThreshold(sc);  
+        }
+        return threshold;
     }
 
 }
