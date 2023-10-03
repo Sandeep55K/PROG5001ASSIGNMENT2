@@ -34,7 +34,10 @@ public class Manager
             System.out.println("Threshold value entered by user is: "+threshold);
             printBelowThreshold(list,threshold);
             List<Student> sortedList = sortStudentList(list);
-            System.out.println(sortedList);
+            System.out.println("***************************");
+            displayFiveTopper(sortedList);
+            System.out.println("***************************");
+            displayFiveLowest(sortedList);
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -168,5 +171,28 @@ public class Manager
 
         }
         return sortedList;
+    }
+    /**
+     * Defining amethod to Display Top 5 Students
+     */
+    public static void displayFiveTopper(List<Student> list){
+        List<Student> sortedList = sortStudentList(list);
+        System.out.println("Five Students Highest total Marks are: "+'\n');
+        for(int i = 0; i<5; i++){
+            System.out.println(sortedList.get(i).getFirstName()+" "+list.get(i).getLastName()+"  || Marks: "+sortedList.get(i).getAssessment().getTotalMarks());
+        }
+
+    }
+
+    /**
+     * Defining amethod to Display 5 students with Lowest marks
+     */
+    public static void displayFiveLowest(List<Student> list){
+        List<Student> sortedList = sortStudentList(list);
+        System.out.println("Five Students with lowest total Marks are: "+'\n');
+        for(int i = sortedList.size()-5; i<sortedList.size(); i++){
+            System.out.println(i+","+sortedList.get(i).getFirstName()+" "+list.get(i).getLastName()+"  || Marks: "+sortedList.get(i).getAssessment().getTotalMarks());
+        }
+
     }
 }
