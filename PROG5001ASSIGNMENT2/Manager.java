@@ -79,7 +79,7 @@ public class Manager
                 else {
 
                     values = data.split(",");
-                    //checking if any value is Empty 
+                    //checking if any value is Empty, if found empty ignoring further
                     for(String str:values){
 
                         if(str.isEmpty()){
@@ -90,6 +90,8 @@ public class Manager
                     if(values.length<6){
 
                     }
+                    //checking if we get all the 6 values from the string and none of them is empty thats our desired data
+                    //putting desired data into Student Object
                     else if(values.length==6 && !emptyString){
 
                         Student stud = new Student();
@@ -110,6 +112,7 @@ public class Manager
         catch(FileNotFoundException e){
             System.out.println("Error: File Not Found");
             e.printStackTrace();
+            //calling main again when some unwanted exception occurs to continue with the program
             main(null);
         }
         return list;
