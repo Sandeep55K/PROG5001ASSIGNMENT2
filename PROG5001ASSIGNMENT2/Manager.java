@@ -33,6 +33,8 @@ public class Manager
             double threshold = getThreshold(sc);
             System.out.println("Threshold value entered by user is: "+threshold);
             printBelowThreshold(list,threshold);
+            List<Student> sortedList = sortStudentList(list);
+            System.out.println(sortedList);
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -146,5 +148,25 @@ public class Manager
         for(int i = 0; i<belowThreshold.size();i++){
             System.out.println(belowThreshold.get(i).getFirstName()+" "+belowThreshold.get(i).getLastName());
         }
+    }
+    /**
+     * Defining amethod to create a sorted List
+     */
+    public static List<Student> sortStudentList(List<Student> list){
+        List<Student> sortedList = list;
+        Student temp;
+        for(int i = 0; i < list.size(); i++){
+
+            for(int j=i+1; j < list.size(); j++){
+                if(list.get(i).getAssessment().getTotalMarks() < list.get(j).getAssessment().getTotalMarks()){
+                    temp = list.get(i);
+                    sortedList.set(i,list.get(j));
+                    sortedList.set(j,temp);
+                }
+
+            }
+
+        }
+        return sortedList;
     }
 }
