@@ -28,7 +28,12 @@ public class Manager
 
             //calling getData method to read and fetch data from the file
             List<Student> list = getData(fileName);
-            //System.out.println(list);
+            
+            Menu menu = new Menu(list);
+            int choice = menu.chooseMenu(sc);
+            if (choice==100)
+            choice = menu.chooseMenu(sc);
+            /**System.out.println(list);
             printStudentInfo(list);
             double threshold = getThreshold(sc);
             System.out.println("Threshold value entered by user is: "+threshold);
@@ -37,7 +42,7 @@ public class Manager
             System.out.println("***************************");
             displayFiveTopper(sortedList);
             System.out.println("***************************");
-            displayFiveLowest(sortedList);
+            displayFiveLowest(sortedList);*/
         }
         catch(Exception e){
             System.out.println("Error Occured");
@@ -110,89 +115,5 @@ public class Manager
         return list;
     }
     
-    /**
-     * Defining a method to print List of information with all data
-     */
-    public static void printStudentInfo(List<Student> list){
-        System.out.println("Name of the Unit "+'\t'+'\t'+"First Name"+'\t'+'\t'+"Last Name"+'\t'+'\t'+"Student ID"+'\t'+"A1"+'\t'+"A2"+'\t'+"A3"+'\t'+"Total");
-        System.out.println();
-        for(int i = 0; i<list.size();i++){
-            System.out.println(Assessment.unitName+'\t'+list.get(i).getFirstName()+'\t'+'\t'+'\t'+list.get(i).getLastName()+'\t'+'\t'+'\t'+'\t'+
-                list.get(i).getStudentId()+'\t'+list.get(i).getAssessment().getMarksA1()+'\t'+list.get(i).getAssessment().getMarksA2()+'\t'
-                +list.get(i).getAssessment().getMarksA3()+'\t'+list.get(i).getAssessment().getTotalMarks());
-        }
-    }
-    /**
-     * Defining method to accept threshold from user
-     */
-    public static double getThreshold(Scanner sc){
-        double threshold;
-        System.out.println("Enter a double Threshold valid value for evaluation : between(0-300.0)");
-        threshold = sc.nextDouble();
-        if(threshold<0 & threshold>300){
-            System.out.println("!! Not a valid choice of Menu !! Please Select No. from the given options");
-            getThreshold(sc);  
-        }
-        return threshold;
-    }
-    /**
-     * Defining method to student with marks below threshold
-     */
-    public static void printBelowThreshold(List<Student> list, double threshold){
-        List<Student> belowThreshold = new ArrayList();
-
-        for(int i =0; i<list.size(); i++){
-
-            if (list.get(i).getAssessment().getTotalMarks() < threshold){
-                belowThreshold.add(list.get(i));
-            }
-        }
-        System.out.println("Students with Total Marks below Threshold are :");
-        for(int i = 0; i<belowThreshold.size();i++){
-            System.out.println(belowThreshold.get(i).getFirstName()+" "+belowThreshold.get(i).getLastName());
-        }
-    }
-    /**
-     * Defining amethod to create a sorted List
-     */
-    public static List<Student> sortStudentList(List<Student> list){
-        List<Student> sortedList = list;
-        Student temp;
-        for(int i = 0; i < list.size(); i++){
-
-            for(int j=i+1; j < list.size(); j++){
-                if(list.get(i).getAssessment().getTotalMarks() < list.get(j).getAssessment().getTotalMarks()){
-                    temp = list.get(i);
-                    sortedList.set(i,list.get(j));
-                    sortedList.set(j,temp);
-                }
-
-            }
-
-        }
-        return sortedList;
-    }
-    /**
-     * Defining amethod to Display Top 5 Students
-     */
-    public static void displayFiveTopper(List<Student> list){
-        List<Student> sortedList = sortStudentList(list);
-        System.out.println("Five Students Highest total Marks are: "+'\n');
-        for(int i = 0; i<5; i++){
-            System.out.println(sortedList.get(i).getFirstName()+" "+list.get(i).getLastName()+"  || Marks: "+sortedList.get(i).getAssessment().getTotalMarks());
-        }
-
-    }
-
-    /**
-     * Defining amethod to Display 5 students with Lowest marks
-     */
-    public static void displayFiveLowest(List<Student> list){
-        List<Student> sortedList = sortStudentList(list);
-        System.out.println("Five Students with lowest total Marks are: "+'\n');
-        for(int i = sortedList.size()-5; i<sortedList.size(); i++){
-            System.out.println(i+","+sortedList.get(i).getFirstName()+" "+list.get(i).getLastName()+"  || Marks: "+sortedList.get(i).getAssessment().getTotalMarks());
-        }
-
-    }
+    
 }
