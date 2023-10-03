@@ -1,0 +1,42 @@
+/@author Sandeep Kaur
+ *ID 24066442
+ */
+
+======================================================================
+Algorithm - Print 5 Top Marks students & 5 Lowest Marks Student
+Assumption - As in Algorithm_3
+
+
+
+function sortList():
+
+    List<Student> list
+
+    varSortedList = list;
+
+    for int i = 0 to list.size()
+        for j = i + 1 to list.size()
+            if list.get(j).getTotalMarks()<list.get(i).getTotalMarks()
+                Student temp = list.get(i)
+				sortedList[i] = sortedList[j]
+				sortedList[j] = temp
+            end if
+         end for
+    end for
+return sortedList
+
+function getFiveTopper()
+	List<Student> sortedList
+	for int i=0 to 4
+		print sortedList.get(i)
+	end for
+return
+
+function getFiveLowest
+	for int = sortedList.size - 5 to sortedList.size
+		print sortedList.get(sortedList.size(i));
+	end for
+return
+	
+=======================================================================
+
